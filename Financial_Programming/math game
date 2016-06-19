@@ -1,0 +1,174 @@
+/**************************************
+ * Yuxiao Luo    yluo52@fordham.edu
+ * This is a math game, enjoy!
+ *************************************/
+
+#include<iostream>
+
+
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
+
+// function main begins program execution
+main(){
+   
+   // variable declarations
+   string yesorno, player;
+   int num1, num2, num3, guess_sum, guess_largest, guess_smallest, sum, largest, smallest, correct, wrong;
+   double average, guess_average;
+   correct = 0;   
+   wrong = 0;
+ 
+   // welcome message 
+   cout << "Welcome to Math Challenge CISC5350" << endl 
+        << "My name is Yuxiao and I challenge you to test your math skills!! :)" << endl << "Do you accept my challenge (Yes/No)?\t";
+   cin >> yesorno;
+
+   // condition for playing the game or not
+   if( yesorno == "No"| yesorno == "no" | yesorno == "NO")
+   {// reject the game
+   
+         cout << "You are afraid of being beaten, right? Hope you could be brave next time. :)" << endl;     
+
+   }
+   if( yesorno == "Yes" | yesorno == "yes" | yesorno == "YES")
+   {// play the game
+     
+         cout << "You are a brave soul! Who am I playing with?\t";
+         cin >> player;
+         cout << "Thank you " << player << ", you must have eaten so much pancake!" 
+         << endl << "Here we go!" << endl << endl;
+   
+         cout << "Enter three numbers(The numbers should be between 100 and 1000, 100 and 1000 are included): ";
+         cin >> num1 >> num2 >> num3;
+         
+         // condition for checking the numbers in the range
+         if( num1 < 100 || num1 >1000 || num2 < 100 || num2 > 1000 || num3 < 100 || num3 > 1000){// not all numbers are in the range
+            
+            cout << "Error: the numbers you entered are not all in the range of 100 and 1000." << endl << endl;      
+         
+         }
+         else{// all the numbers are in the range
+         
+               cout << "Thank you " << player << ", you entered: " << num1 << ", " << num2 
+               << ", " << num3 << endl << endl;
+         
+               // calculate the sum and average
+               sum = num1 + num2 + num3;
+               average = (num1 + num2 + num3)/3.0;
+               
+               // find the largest and smallest
+               if(num1 > num3 && num1 > num3){
+                   
+                  largest = num1;
+                    
+                  if( num2 < num3){
+                     
+                     smallest = num2;
+                     }else{
+                           smallest = num3;
+                      }
+                  }
+               if(num2 > num3 && num2 > num1){
+                  
+                  largest = num2;
+                  
+                  if( num1 < num3){
+                     
+                     smallest = num1;
+                  }else{
+                   
+                     smallest = num3;
+                   } 
+               }
+               else{
+                   
+                  largest = num3;
+                  
+                  if( num1 < num2){
+                  
+                     smallest = num1;
+                  }else{
+                     smallest = num2; 
+                   }
+               }
+                  
+               // Guess from the player   
+               cout << "Guess the sum?\t";
+               cin >> guess_sum;
+               cout << "Guess the average?\t";
+               cin >> guess_average;
+               cout << "Guess the largest?\t";
+               cin >> guess_largest;
+               cout << "Guess the smallest?\t";
+               cin >> guess_smallest;
+               cout << endl;
+
+
+               // check the answer
+               if(guess_sum == sum ){
+                
+                  correct = correct + 1;
+               
+               }else{  
+                  
+                  cout << "Sorry, " << player << ", the correct answer for the sum is " << sum <<endl;
+                  wrong = wrong + 1;
+                
+               }//end if 
+               
+               if(guess_average == average){
+               
+                 correct = correct + 1;
+             
+               }else{
+                 
+                 cout << "Sorry, " << player << ", the correct answer for the average is " << average << endl;
+                 wrong = wrong + 1;
+                
+               }//end if
+                    
+               if(guess_largest == largest){
+               
+                 correct = correct + 1;
+               }else{
+                 
+                 cout << "Sorry, " << player << ", the correct answer for the largest number is " << largest << endl;
+                 wrong = wrong + 1; 
+               }//end if
+                  
+               if(guess_smallest == smallest){
+
+		 correct = correct + 1;
+               }else{
+
+                 cout << "Sorry, " << player << ", the correct answer for the smallest number is " << smallest << endl;
+                 wrong =  wrong + 1;
+ 
+               }//end if
+               
+               //output the grade and comments to the player 
+               if( correct == 4){
+                
+                 cout << "Wooow, " << player << ", you are Brilliant!!" << endl << endl;
+               }
+               if( correct < 4 && correct >= 2){
+
+                 cout << "Not bad, " << player << ", but you need to practice more." << endl << endl;
+               }
+               if( correct < 2){
+            
+                 cout << "Unfortunately, " << player << ", you failed more than half of the questions here. Consider a math tutor." << endl << endl;
+
+               }
+               
+               // summary of the results and congratulate the playe for being brave
+               cout << player << ", the number of correct answers is " << correct << ". And the number of wrong answers is " << wrong << "." << endl
+                    << "Thank you for playing! You are brave!" << endl << endl;
+   
+         }                       
+          
+   }
+}
