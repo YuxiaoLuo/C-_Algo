@@ -1,0 +1,107 @@
+Welcome to LEVEL 1, enjoy the game!!
+The randomly generated equation is 7+6 
+Enter the answer of the equation: 13
+Bravo, it's the right answer!!
+The randomly generated equation is 1-3 
+Enter the answer of the equation: -3
+Your answer is incorrect.
+The answer is supposed to be -2
+Okay, next equation~
+The randomly generated equation is 4-1 
+Enter the answer of the equation: 3
+Bravo, it's the right answer!!
+The randomly generated equation is 1/9 
+Enter the answer of the equation: 0
+Bravo, it's the right answer!!
+1.Continue at the current level.
+2.Go to the next level.
+3.Display summary statistics for the current level.
+4.Quit
+Please enter the number of choice: 3
+
+100% of division equations are correct
+50% of subtraction equations are correct
+100% of addition equations are correct
+1.Continue at the current level.
+2.Go to the next level.
+3.Display summary statistics for the current level.
+4.Quit
+Please enter the number of choice: 2
+
+Welcome to LEVEL 2, enjoy the game!!
+The randomly generated equation is 17+24 
+Enter the answer of the equation: 41
+Bravo, it's the right answer!!
+The randomly generated equation is 19/2 
+Enter the answer of the equation: 9
+Bravo, it's the right answer!!
+1.Continue at the current level.
+2.Go to the next level.
+3.Display summary statistics for the current level.
+4.Quit
+Please enter the number of choice: 3
+
+100% of division equations are correct
+100% of addition equations are correct
+1.Continue at the current level.
+2.Go to the next level.
+3.Display summary statistics for the current level.
+4.Quit
+Please enter the number of choice: 2
+
+Welcome to LEVEL 3, enjoy the game!!
+The randomly generated equation is 13/11 
+Enter the answer of the equation: 1
+Bravo, it's the right answer!!
+The randomly generated equation is 13-17 
+Enter the answer of the equation: -4
+Bravo, it's the right answer!!
+1.Continue at the current level.
+2.Go to the next level.
+3.Display summary statistics for the current level.
+4.Quit
+Please enter the number of choice: 3
+
+100% of division equations are correct
+100% of subtraction equations are correct
+1.Continue at the current level.
+2.Go to the next level.
+3.Display summary statistics for the current level.
+4.Quit
+Please enter the number of choice: 2
+
+Welcome to LEVEL 4, enjoy the game!!
+The randomly generated equation is 0-1 
+Enter the answer of the equation: -1
+Bravo, it's the right answer!!
+The randomly generated equation is -21*-14 
+Enter the answer of the equation: 294
+Bravo, it's the right answer!!
+1.Continue at the current level.
+3.Display summary statistics for the current level.
+4.Quit
+Please enter the number of choice: 3
+
+100% of multiplication equations are correct
+100% of subtraction equations are correct
+1.Continue at the current level.
+3.Display summary statistics for the current level.
+4.Quit
+Please enter the number of choice: 4
+
+Let's take a look at the statistics.
+Level 1 --> 
+100% of division equations are correct
+50% of subtraction equations are correct
+100% of addition equations are correct
+Level 2 --> 
+100% of division equations are correct
+100% of addition equations are correct
+Level 3 --> 
+100% of division equations are correct
+100% of subtraction equations are correct
+Level 4 --> 
+100% of multiplication equations are correct
+100% of subtraction equations are correct
+You are awesome!
+This is the end of the game. See you next time. :)
