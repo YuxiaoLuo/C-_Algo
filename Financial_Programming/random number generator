@@ -1,0 +1,161 @@
+/* Mar 11th, 2016
+ * Yuxiao Luo yluo52@fordham.edu
+ * This is a random number generator and user can guess the number depending on the level of play. Enjoy the game.
+ */
+
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+#include<string>
+#include<sstream>
+
+using namespace std;
+using std::string;
+
+// function for generating random number
+int generateNumber( int min, int max){
+   
+   int rNum;
+   
+   // use the time function as the seed
+   srand(time(0));
+ 
+   // a random integer from shift to scalingFactor (inclusive)
+   rNum = min + rand()%max;  
+   return rNum;
+
+}// end function
+
+// function for comparing generated number and guessed number
+bool compare( int rNum, int guessedNum){
+
+   bool sameNumber;
+   if( rNum == guessedNum ){
+      sameNumber = true;     
+   }
+   else{
+      sameNumber = false;
+   }
+   return sameNumber;
+
+}// end function
+
+// function for outputing result and comment of the game
+string output( int counterNum){
+
+   // coerce the number to string, #include<sstream> 
+   string result; 
+   string Numtostring;
+   ostringstream convert; // stream used for the conversion
+   convert << counterNum; // insert the textual representation of 'number' in the characters in the stream
+   Numtostring = convert.str();
+ 
+   if( counterNum  == 1){
+      result = "WOW, either you are insightful or got really lucky!";
+   } 
+   else if( counterNum > 10){
+      result = "Really, you can do better than " + Numtostring + " number of guesses.";
+   }  
+   else{
+
+      if( counterNum  == 10){
+         result =  "Ahah! 10th time lucky!";
+      }else{
+         result = "You made it in " + Numtostring + " times. Good job!";
+      }
+   }
+   //else{
+   //   result =  "Really, you can do better than " + Numtostring + " number of guesses.";
+   // }
+   return result;
+} // end function
+
+main(){
+   // declare defined function and variables   
+   int generateNumber( int, int); // declare function for generating number
+   bool compare( int, int); // declare function for comparison
+   string output( int ); // declare function for outputing
+   string  YorN; // the answer of user to play the game
+   int generatedNum; // randomly generated numbers 
+   int guess; // the guess number by user
+   int counter, level; // counters for number of guesses
+   int min, max; // min and max of generated number
+  
+   do{
+      cout << "welcome to the game of guessing number. I have a number between x and y.\nCan you guess my number? (Enter Yes/No)" << endl;
+      cin >> YorN;
+      if( YorN == "No" || YorN == "NO" || YorN == "no" || YorN == "N"){
+         cout << "Alright, hope you could be brave next time!" << endl;
+      }else{
+         // set the initial values of first guess
+         cout << "There are 5 levels in the game.\n Level 1: 1-25\n Level 2: 1-50\n Level 3: 1-100\n Level 4: -100-100\n Level 5: -1000-1000" << endl;              
+         level = 1;
+         min = 1, max =25;
+         do{
+                 
+            cout << "Okay! Now we are in Level " << level << "." << endl; // output the selected level
+            cout << "I have a number between" << min << " and " << max << "." << endl;
+            counter = 1; // set the counter 
+            generatedNum = generateNumber( min, max); // generate random number
+            cout << "Please enter your first guess: " << endl; 
+            cin >> guess;
+         
+            // while loop for guess procedure
+            while( compare( generatedNum, guess) == false){
+         
+               if( guess < generatedNum){
+                  cout << "Too low. Try again: ";
+                  cin >> guess;
+               }
+               else if( guess > generatedNum ){
+                  cout << "Too high. Try again: ";
+                  cin >> guess;
+               }
+               counter ++;   
+            } // end while loop
+         
+            cout << output( counter ) << endl; // output function to comment        
+            
+            // upgrade to next level
+            if( counter <= 4){
+               cout << "Since you guess the random number generated within the first 4 guesses, let's go to the next level!!" << endl;
+               level ++;
+               switch( level ){
+                  case 1:
+                     generatedNum = generateNumber( 1, 25);
+                     min = 1;
+                     max = 25;
+                     break;
+                  case 2:
+                     generatedNum = generateNumber( 1, 50);
+                     min = 1;
+                     max = 50;
+                     break;
+                     case 3:
+                     generatedNum = generateNumber( 1, 100);
+                     min = 1;
+                     max = 100;
+                     break;
+                  case 4:
+                     generatedNum = generateNumber( -100, 100);
+                     min = -100;
+                     max = 100;
+                     break;
+                  case 5:
+                     generatedNum = generateNumber( -1000, 1000);
+                     min = -1000;
+                     max = 1000;
+                     break;
+                  default:
+                     break;
+               } // end switch 
+            } // end if statement
+         }while( (counter > 5 || level > 6) == false ); // end do while
+           
+         cout << "Would you like to play again? (Enter yes or no)" << endl;
+         cin >> YorN;
+      }
+   }while( YorN == "Yes" || YorN == "yes" || YorN == "Y" ); // end do while loop
+ 
+   cout << "Bye Bye!!" << endl;
+} // end main fucniton
