@@ -1,0 +1,220 @@
+/* Yuxiao Luo
+ * yluo52@fordham.edu   A14020241
+ * More Number's Play
+ */
+
+#include<iostream>
+#include<iomanip> // for using setw()
+#include<string> // for using string
+
+using namespace std;
+using std::string;
+
+// declare global variables
+int a[5] = {};
+int sum, count_num, search_num, replace_num, nvalue, mod_num, largest, smallest, clear_num;
+double ave;
+int newvalue = 0;
+
+// function for input()
+void input(int* a){
+
+   // input value into the array
+   cout << "Enter element 1: "; cin >> a[0];
+   cout << "Enter element 2: "; cin >> a[1];
+   cout << "Enter element 3: "; cin >> a[2];
+   cout << "Enter element 4: "; cin >> a[3];
+   cout << "Enter element 5: "; cin >> a[4];
+   cout << "You have entered:" << endl;
+   
+   cout << "Position" << setw(13) << "Value" << endl;
+   cout << "------" << setw(15) << "-----" << endl;             
+   for( int i = 0; i < 5; i++)
+   cout << i+1 << setw(17) << a[i] << endl;
+}// end function
+   
+// function for statistics
+void statistics(int* a){
+
+   sum = 0;
+   // compute sum of the array using for loop  
+   for( int i = 0; i < 5; i++){
+      sum += a[i];
+                        
+   }//end for loop
+   // find  smallest value in the array
+   if( a[0] <= a[1] && a[0] <= a[2] && a[0] <= a[3] && a[0] <= a[4])
+      smallest = a[0];
+   else if( a[1] <= a[0] && a[1] <= a[2] && a[1] <= a[3] && a[1] <= a[4])
+      smallest = a[1];
+   else if( a[2] <= a[0] && a[2] <= a[1] && a[2] <= a[3] && a[2] <= a[4])
+      smallest = a[2];
+   else if( a[3] <= a[0] && a[3] <= a[1] && a[3] <= a[2] && a[3] <= a[4])
+      smallest = a[3];
+   else 
+      smallest = a[4];
+   // find largest value in the array
+   if( a[0] >= a[1] && a[0] >= a[2] && a[0] >= a[3] && a[0] >= a[4])
+      largest = a[0];
+   else if( a[1] >= a[0] && a[1] >= a[2] && a[1] >= a[3] && a[1] >= a[4])
+      largest = a[1];
+   else if( a[2] >= a[0] && a[2] >= a[1] && a[2] >= a[3] && a[2] >= a[4])
+      largest = a[2];
+   else if( a[3] >= a[0] && a[3] >= a[1] && a[3] >= a[2] && a[3] >= a[4])
+      largest = a[3];
+   else 
+      largest = a[4];   
+   // compute average number of the array
+   ave = sum/5.0; 
+}// end function
+
+//function for count
+int count(int* a, int count_num){
+   int frequency = 0; 
+   for( int i = 0; i < 5; i++)
+   {   
+      if( count_num == a[i]) 
+         frequency ++;
+   }// end for loop
+   return(frequency);     
+}// end function
+
+//function for search
+int search(int* a, int search_num){
+   int position = -1;
+   for( int i =0; i <5; i++)
+   {
+      if( search_num == a[i])
+      {   position = i+1;
+          break;
+      }  
+   }// end for loop
+   return(position);   
+}
+
+// function for replace
+int replace(int* a, int replace_num, int nvalue){
+   int times = 0;
+   for( int i =0; i < 5; i++)
+   {
+      if( replace_num == a[i])
+      {   a[i] = nvalue;
+          times ++;
+      }//end if     
+   }// end for loop
+   return(times);
+}// end function
+
+//funciton for modify
+bool modify(int* a, int mod_num, int newvalue){
+   bool result;
+   if(mod_num < 1 || mod_num > 5)
+      result = false;
+   else
+   {   
+       a[mod_num - 1] = newvalue;
+       result = true;
+   }
+   return(result);
+}// end function
+
+// function for clear
+bool clear( int* a, int clear_num){
+   bool result;
+   if( clear_num == -1){
+      for( int i =0; i < 5; i++)
+         a[i] = 0;
+      result = true;
+   }
+   else if(clear_num < 1 || clear_num > 5)
+      result = false;
+   else
+   {   
+      a[clear_num - 1] = 0;
+      result = true;
+   }
+   return(result);
+}// end function
+
+main(){
+   // declare variables in main body
+   string choice, go;
+   
+   do{   
+   cout << "Welcome to the world of Arrays!!" << endl;
+   cout << "Please choose from the following options:" << endl << endl;
+   cout << "To input values in the array, enter i or I." << endl;
+   cout << "To see statistics, enter s or S." << endl;
+   cout << "To count an element, enter c or C." << endl;
+   cout << "To search for the element in the array, enter e or E." << endl;
+   cout << "To replace the element in the array with a new number, enter r or R." << endl;
+   cout << "To modify the value in a position in the array, enter m or M." << endl;
+   cout << "To clear a position in the array, enter l or L." << endl << endl;
+   cout << "Enter choice: "; cin >> choice;
+   
+   if( choice == "i" || choice == "I" )
+      input(a); 
+   else if( choice == "s" || choice == "S")
+   {
+      statistics(a);
+      cout << "The sum of all the number entered is: " << sum << endl;
+      cout << "The average of all the numbers entered is: " << ave << endl;
+      cout << "The largest number entered is: " << largest << endl;
+      cout << "The smallest number entered is: " << smallest << endl << endl;
+   }
+   else if( choice == "c" || choice == "C")
+   {
+      cout << "What number would you like to count? "; cin >> count_num;
+      cout << "The number " << count_num << " appears " << count(a,count_num) << " times." << endl << endl;
+   }
+   else if( choice == "e" || choice == "E")
+   {
+      cout << "What number would you like to search for? "; cin >> search_num;
+      cout << "The number " << search_num << " is in position " << search(a, search_num) << " ." << endl << endl;
+   }
+   else if( choice == "r" || choice == "R")
+   {
+      cout << "What element would you like to replace? "; cin >> replace_num;
+      cout << "Enter the new value: "; cin >> nvalue;
+      cout << "The element " << replace_num << " was replaced " << replace(a, replace_num, nvalue) << " times." << endl << endl;
+      
+      // prints out new array 
+      cout << "Position" << setw(13) << "Value" << endl;
+      cout << "------" << setw(15) << "-----" << endl;             
+      for( int i = 0; i < 5; i++)
+      cout << i+1 << setw(17) << a[i] << endl << endl;
+   }
+   else if( choice == "m" || choice == "M")
+   {
+      cout << "What position would you like to modify? "; cin >> mod_num;
+      while( modify(a, mod_num, newvalue) == false ){
+         cout << "That is an invalid position, please enter a position between 1 and 5." << endl;
+         cout << "What position would you like to modify: "; cin >> mod_num;
+      }
+      cout << "Enter the new value: "; cin >> newvalue;
+      modify(a, mod_num, newvalue);
+      cout << "The contents of your array are now: " << endl << endl;      
+      // prints out new array 
+      cout << "Position" << setw(13) << "Value" << endl;
+      cout << "------" << setw(15) << "-----" << endl;             
+      for( int i = 0; i < 5; i++)
+      cout << i+1 << setw(17) << a[i] << endl << endl;
+
+   }
+   else if( choice == "l" || choice == "L")
+   {
+      cout << "What position would you like to clear? Enter the position or -1 to clear entire array: "; cin >> clear_num; 
+      while( clear(a, clear_num) == false){
+         cout << "That is an invalid position, please enter a position between 1 and 5, or -1 to clear entire array." << endl;
+         cout << "What position would you like to clear? Enter the position or -1 to clear entire array: "; cin >> clear_num;
+      }
+      cout << "The contents of your array are now: " << endl << endl;
+      // prints out new array 
+      cout << "Position" << setw(13) << "Value" << endl;
+      cout << "------" << setw(15) << "-----" << endl;             
+      for( int i = 0; i < 5; i++)
+      cout << i+1 << setw(17) << a[i] << endl << endl;         
+   }
+   cout << "To further operate the array, enter o or O.\nOr enter any other letter to leave." << endl; cin >> go;
+   }while( go == "o" || go  == "O");//end do while
+}// end main 
